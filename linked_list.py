@@ -46,6 +46,7 @@ class LinkedList:
         follower = leader["next"]
         leader["next"] = new_node
         new_node["next"] = follower
+        self.length += 1
         return self
 
     def traverse_to_idx(self, idx):
@@ -58,6 +59,17 @@ class LinkedList:
             curr = curr["next"]
             counter += 1
         return curr
+
+    def _printList(self):
+        """
+        Traverse the linked list and return a list containing all node values in order.
+        """
+        array = []
+        curr = self.head
+        while curr is not None:
+            array.append(curr["value"])
+            curr = curr["next"]
+        return array
 
 
 my_linkedlist = LinkedList(10)
@@ -73,4 +85,5 @@ my_linkedlist.prepend(1)
 my_linkedlist.insert(200, 99)
 my_linkedlist.insert(2, 11)
 
-print(my_linkedlist.head)
+# print(my_linkedlist.head)
+print(my_linkedlist._printList())
