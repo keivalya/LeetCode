@@ -15,9 +15,17 @@ class LinkedList:
         self.length += 1
         return self
 
+    def prepend(self, value):
+        new_node = {"value": value, "next": None}
+        new_node["next"] = self.head
+        self.head = new_node
+        self.length += 1
+        return self
+
 
 my_linkedlist = LinkedList(10)
 my_linkedlist.append(5)
 my_linkedlist.append(16)
+my_linkedlist.prepend(1)
 
 print(my_linkedlist.head)
