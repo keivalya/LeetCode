@@ -49,6 +49,16 @@ class LinkedList:
         self.length += 1
         return self
 
+    def remove(self, idx):
+        """
+        Remove the node at the specified index from the linked list.
+        Adjusts pointers to skip over the node and decrements the length.
+        """
+        leader = self.traverse_to_idx(idx - 1)
+        leader["next"] = leader["next"]["next"]
+        self.length -= 1
+        return self
+
     def traverse_to_idx(self, idx):
         """
         Traverse the list to return the node at the specified index.
@@ -84,6 +94,10 @@ my_linkedlist.prepend(1)
 # insert
 my_linkedlist.insert(200, 99)
 my_linkedlist.insert(2, 11)
+
+# remove
+my_linkedlist.remove(2)
+my_linkedlist.remove(2)
 
 # print(my_linkedlist.head)
 print(my_linkedlist._printList())
