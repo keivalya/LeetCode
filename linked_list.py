@@ -59,6 +59,20 @@ class LinkedList:
         self.length -= 1
         return self
 
+    def reverse(self):
+        if self.head["next"] is None:
+            return self
+        first, second = self.head, self.head["next"]
+        self.tail = self.head
+        while second:
+            temp = second["next"]
+            second["next"] = first
+            first = second
+            second = temp
+        self.head["next"] = None
+        self.head = first
+        return self
+
     def traverse_to_idx(self, idx):
         """
         Traverse the list to return the node at the specified index.
